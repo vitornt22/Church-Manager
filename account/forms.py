@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.core.exceptions import ValidationError
 
-from .models import Account
+from account.models import Account
 
 
 class AccountUserChangeForm(UserChangeForm):
@@ -74,7 +74,7 @@ class AccountForm(UserChangeForm):
 class AccountFormAdmin(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
-        super(CompanyFormAdmin, self).__init__(*args, **kwargs)
+        super(AccountFormAdmin, self).__init__(*args, **kwargs)
         self.fields['cnpj'].widget.attrs['class'] = 'mask-cnpj'
         self.fields['phone'].widget.attrs['class'] = 'mask-phone'
         self.fields['zip_code'].widget.attrs['class'] = 'mask-cep'

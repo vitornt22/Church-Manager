@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Optar.urls'
+ROOT_URLCONF = 'churchManager.urls'
 
 TEMPLATES = [
     {
@@ -82,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Optar.wsgi.application'
+WSGI_APPLICATION = 'churchManager.wsgi.application'
 
 
 # Database
@@ -150,7 +150,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Autentication Settings
-AUTH_USER_MODEL = "company.Company"
+AUTH_USER_MODEL = "account.Account"
 
 # login settings
 SESSION_COOKIE_AGE = 1800
