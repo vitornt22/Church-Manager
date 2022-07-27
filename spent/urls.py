@@ -4,4 +4,6 @@ from . import views
 
 app_name = 'spent'
 urlpatterns = [
+    path('', views.spents, name='spents'),
+
 ]

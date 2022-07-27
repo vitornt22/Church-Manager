@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 
 def entries(request):
-    return render(request,'Entradas-Saidas/Entradas-Saidas.html', {'active':3})
+    return render(request,'Entradas/entradas.html', {'active':4})

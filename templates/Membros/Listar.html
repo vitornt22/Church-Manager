@@ -1,0 +1,51 @@
+{%extends 'Base/BaseAdmin.html' %}
+{%load static%}
+
+{%block pesquisa%}
+{%include 'IncludeItems/barraPesquisa.html' %}
+{%endblock pesquisa%}
+
+{%block title%}
+<h1 class="m-0">Fieis</h1>
+{%endblock title%}
+
+{%block content%}
+<div class="row">
+    
+    {%for i in '0123456789'|make_list%}
+    <a role="button" href="{%url 'member:profile' %}">
+    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+      <div class="card bg-light d-flex flex-fill">
+        <div class="card-header text-muted border-bottom-0">
+        </div>
+        <div class="card-body pt-0">
+          <div class="row">
+            <div class="col-7">
+              <h2 class="lead"><b>Joao Vitor de Sousa</b></h2>
+              <p class="text-muted text-sm"><b>Sobre: </b> Membro / Batizado com Espirito Santo / Dizimista /  </p>
+              <ul class="ml-4 mb-0 fa-ul text-muted">
+                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Endereço: Rua odomirio Ribeiro 259, Vila Nova, PI</li>
+                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contato : (89) 99922-3344 </li>
+              </ul>
+            </div>
+            <div class="col-5 text-center">
+              <img src="{%static 'dist/img/user1-128x128.jpg' %}" alt="user-avatar" class="img-circle img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="text-right">
+            <a href="#" class="btn ">
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    </a>
+    {%endfor%}
+    
+
+    
+</div>
+{%endblock content%}

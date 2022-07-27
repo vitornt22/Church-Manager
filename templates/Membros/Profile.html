@@ -1,0 +1,138 @@
+{% extends 'Base/BaseAdmin.html' %}
+{%load static%}
+{%block addLink%}
+  
+{%endblock addLink%}
+
+
+
+{%block content%}
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-9">
+      <!-- general form elements -->
+      <div class="card card-lightblue">
+        <div class="card-header">
+          <h3 class="card-title">Cadastrar Fiel</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form>
+          <div class="card-body">
+            <div class="row">
+                <div class="col-lg-8 form-group">
+                    <label for="exampleInputEmail1">Nome Completo</label>
+                    <input type="input" class="form-control" id="exampleInputName" placeholder="Joao Vitor ">
+                </div>
+                <div class="col-lg-4 form-group">
+                    <label for="exampleInputEmail1">Endereço de Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="JoaoVitor@gmail.com">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 form-group">
+                    <label for="exampleInputEmail1">CPF</label>
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="600.988.777-66">
+                </div>
+                <div class="col-lg-2 form-group">
+                    <label for="exampleInputEmail1">Telefone</label>
+                    <input type="phone" class="form-control" id="exampleCPFEmail1" placeholder="(89)99988-7766">
+                </div>
+                <div class="col-lg-2 form-group">
+                  <label for="exampleInputEmail1">Nascimento</label>
+                  <input type="date" class="form-control" id="exampleCPFEmail1" placeholder="15/02/2000">
+              </div>
+                <div class="col-lg-5 form-group">
+                    <label for="exampleInputEmail1">Endereço</label>
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Rua Odomirio Ribeiro">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-1 form-group">
+                    <label for="exampleInputEmail1">Nº</label>
+                    <input type="number" class="form-control" id="exampleCPFEmail1" placeholder="233">
+                </div>
+                <div class="col-lg-4 form-group">
+                    <label for="exampleInputEmail1">Cidade</label>
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Fronteiras">
+                </div>
+                <div class="col-lg-1 form-group">
+                    <label for="exampleInputEmail1">Estado</label>
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="PI">
+                </div>
+                <div class="col-lg-3 form-group">
+                    <label for="exampleInputEmail1">Bairro</label>
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Alto">
+                </div>
+                <div class="col-lg-3 form-group">
+                    <label for="exampleInputFile">Foto</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Escolha uma foto</label>
+                      </div>
+                    </div>
+                  </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-4 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Batizado nas Águas</label>
+                  </div>
+                  <div class="col-lg-4 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Dizimista</label>
+                  </div>
+                  <div class="col-lg-4 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Batizado com Espirito Santo</label>
+                  </div>
+            </div>    
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn bg-lightblue">Editar Campos</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+
+        <!-- Profile Image -->
+        <div style="height: 75Vh;" class="card card-primary card-outline">
+          <div class="card-body box-profile">
+            <div class="text-center">
+              <img class="profile-user-img img-fluid img-circle"
+                   src="{%static 'dist/img/user1-128x128.jpg' %}"
+                   alt="">
+            </div>
+
+            <h3 class="profile-username text-center">Joao Vitor</h3>
+
+
+            <ul class="list-group list-group-unbordered mb-3">
+              <li class="list-group-item">
+                <a href="#" class="btn bg-success btn-block"><b>Carta de Recomendação</b></a>
+            </li>
+              <li class="list-group-item">
+                <a href="#" class="btn bg-lightblue btn-block"><b>Carta de Mudança</b></a>
+            </li>
+              <li class="list-group-item">
+                <a href="#" class="btn bg-danger btn-block"><b>Remover</b></a>
+            </li>
+            </ul>
+
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+</div>
+      <!-- /.card -->
+
+  
+{%endblock content%}

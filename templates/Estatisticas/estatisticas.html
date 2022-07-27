@@ -1,0 +1,186 @@
+{% extends 'Base/BaseAdmin.html' %}
+
+{%block addLink%}
+  
+{%endblock addLink%}
+
+{%block title%}
+<h1 class="m-0">Estatísticas</h1>
+{%endblock title%}
+
+{%block content%}
+
+<div class="row">
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>150</h3>
+
+        <p>Membros</p>
+      </div>
+      <div class="icon">
+        <i style="width: 25%;"  class="fa-solid fa-user-check"></i>      
+      </div>
+      <a href="#" class="small-box-footer">      </a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-warning">
+      <div class="inner">
+        <h3>80<sup style="font-size: 20px"></sup></h3>
+
+        <p>Congregados</p>
+      </div>
+      <div class="icon">
+        <i style="width: 25%;" class="fa-solid fa-user-clock"></i>      
+      </div>
+      <a href="#" class="small-box-footer">      </a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-danger">
+      <div class="inner">
+        <h3>100</h3>
+
+        <p>Dizimistas</p>
+      </div>
+      <div class="icon">
+        <i class="fa-regular fa-envelope"></i>      
+      </div>
+      <a href="#" class="small-box-footer"> </a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3>R$ 1.300</h3>
+
+        <p>Caixa</p>
+      </div>
+      <div class="icon">
+        <i class="fa-solid fa-sack-dollar"></i>      
+      </div>
+      <a href="#" class="small-box-footer">      </a>
+    </div>
+  </div>
+  <!-- ./col -->
+</div>
+
+<div class="row">
+
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header border-0">
+        <div class="d-flex justify-content-between">
+          <h3 class="card-title">Lucros</h3>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="d-flex">
+          <p class="d-flex flex-column">
+            <span class="text-bold text-lg">$5,267.00</span>
+            <span>Lucro deste mês</span>
+          </p>
+          <p class="ml-auto d-flex flex-column text-right">
+            <span class="text-success">
+              <i class="fas fa-arrow-up"></i> 33.1%
+            </span>
+            <span class="text-muted">Aumento desde ultimo mês</span>
+          </p>
+        </div>
+
+        <div class="position-relative mb-4">
+          <canvas id="barChart" height="100"></canvas>
+        </div>
+
+        <div class="d-flex flex-row justify-content-end">
+          <span class="mr-2">
+            <i class="fas fa-square text-primary"></i> Esse Mês
+          </span>
+        </div>
+      </div>
+    </div>
+
+    
+</div>
+
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-header border-0">
+      <div class="d-flex justify-content-between">
+        <h3 class="card-title">Entradas/Saídas</h3>
+      </div>
+      <div  style="text-align: center; width: 68%" class=" card-body">
+          <canvas id="pie-chart" width="50"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+
+{%endblock content%}
+
+{%block addScript%}
+
+<script>
+  const ctx = document.getElementById('pie-chart');
+
+  const data = {
+    labels: [
+      'Entradas',
+      'Saídas'
+    ],
+    datasets: [{
+      label: 'Entradas e Saídas',
+      data: [300, 100],
+      backgroundColor: [
+        'rgb(0, 50, 255)',
+        'rgb(255, 205, 86)'
+      ],
+      hoverOffset: 4
+    }]
+  };
+
+  const config = {
+    type: 'doughnut',
+    data: data,
+  };
+
+  mychart= new Chart(ctx, config)
+
+  new Chart(document.getElementById("barChart"), {
+    type: 'bar',
+    data: {
+      labels: ["Jan", "Fev", "Mar", "Abr", "Mai","Jun", "Jul" , "Ago" , "Set", "Out", "Nov" , "Dez"],
+      datasets: [
+        {
+          label: "Lucro em R$",
+          backgroundColor: ["#3e95cd",  ],
+          data: [2478,5267,734,784,433,234,5000, 2478,5267,734,784,433]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Predicted world population (millions) in 2050'
+      }
+    }
+});
+
+
+</script>
+
+
+
+{%endblock addScript%}>
+
+<!---->
