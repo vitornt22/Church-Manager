@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn churchManager.wsgi   
+web: gunicorn churchManager.wsgi --log-file - 
