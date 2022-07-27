@@ -9,11 +9,11 @@
 {%block content%}
 <div class="row">
     <!-- left column -->
-    <div class="col-md-9">
+    <div class="col-md-12">
       <!-- general form elements -->
       <div class="card card-lightblue">
         <div class="card-header">
-          <h3 class="card-title">Cadastrar Fiel</h3>
+          <h3 class="card-title">Dados da Igreja</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -21,75 +21,51 @@
           <div class="card-body">
             <div class="row">
                 <div class="col-lg-8 form-group">
-                    <label for="exampleInputEmail1">Nome Completo</label>
-                    <input type="input" class="form-control" id="exampleInputName" placeholder="Digite seu nome completo">
+                    <label for="exampleInputEmail1">Nome e ministério</label>
+                    <input type="input" class="form-control" id="exampleInputName" placeholder="Assembleia de Deus: missão">
                 </div>
                 <div class="col-lg-4 form-group">
                     <label for="exampleInputEmail1">Endereço de Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Digite seu email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="admisao@gmail.com">
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3 form-group">
-                    <label for="exampleInputEmail1">CPF</label>
-                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Digite o CPF">
+                    <label for="exampleInputEmail1">CNPJ</label>
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="">
                 </div>
-                <div class="col-lg-2 form-group">
+                <div class="col-lg-3 form-group">
                     <label for="exampleInputEmail1">Telefone</label>
-                    <input type="phone" class="form-control" id="exampleCPFEmail1" placeholder="Digite o telefone">
+                    <input type="phone" class="form-control" id="exampleCPFEmail1" placeholder="(89) 999887755">
                 </div>
-                <div class="col-lg-2 form-group">
-                  <label for="exampleInputEmail1">Nascimento</label>
-                  <input type="date" class="form-control" id="exampleCPFEmail1" placeholder="Nascimento">
-              </div>
-                <div class="col-lg-5 form-group">
+               
+                <div class="col-lg-6 form-group">
                     <label for="exampleInputEmail1">Endereço</label>
-                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Ex: R. Av. Tv.">
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Av Sete de Setembro">
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-lg-1 form-group">
                     <label for="exampleInputEmail1">Nº</label>
-                    <input type="number" class="form-control" id="exampleCPFEmail1" placeholder="Nº">
+                    <input type="number" class="form-control" id="exampleCPFEmail1" placeholder="1">
                 </div>
                 <div class="col-lg-4 form-group">
                     <label for="exampleInputEmail1">Cidade</label>
-                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Cidade">
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Fronteiras">
                 </div>
-                <div class="col-lg-1 form-group">
+                <div class="col-lg-3 form-group">
                     <label for="exampleInputEmail1">Estado</label>
-                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Estado">
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="PI">
                 </div>
-                <div class="col-lg-3 form-group">
+                <div class="col-lg-4 form-group">
                     <label for="exampleInputEmail1">Bairro</label>
-                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Bairro">
+                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Centro">
                 </div>
-                <div class="col-lg-3 form-group">
-                    <label for="exampleInputFile">Foto</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Escolha uma foto</label>
-                      </div>
-                    </div>
-                  </div>
+                
                 
             </div>
-            <div class="row">
-                <div class="col-lg-4 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Batizado nas Águas</label>
-                  </div>
-                  <div class="col-lg-4 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Dizimista</label>
-                  </div>
-                  <div class="col-lg-4 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Batizado com Espirito Santo</label>
-                  </div>
-            </div>    
+            
           </div>
           <!-- /.card-body -->
 
@@ -100,37 +76,6 @@
       </div>
     </div>
 
-    <div class="col-md-3">
-
-        <!-- Profile Image -->
-        <div class="card card-primary card-outline">
-          <div class="card-body box-profile">
-            <div class="text-center">
-              <img class="profile-user-img img-fluid img-circle"
-                   src="{%static 'dist/img/user4-128x128.jpg' %}"
-                   alt="">
-            </div>
-
-            <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-            <p class="text-muted text-center">Software Engineer</p>
-
-            <ul class="list-group list-group-unbordered mb-3">
-              <li class="list-group-item">
-                <a href="#" class="btn bg-success btn-block"><b>Carta de Recomendação</b></a>
-            </li>
-              <li class="list-group-item">
-                <a href="#" class="btn bg-lightblue btn-block"><b>Carta de Mudança</b></a>
-            </li>
-              <li class="list-group-item">
-                <a href="#" class="btn bg-danger btn-block"><b>Remover</b></a>
-            </li>
-            </ul>
-
-          </div>
-          <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
 
 </div>
       <!-- /.card -->
