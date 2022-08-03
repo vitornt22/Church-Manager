@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def login_view(request):
-    return render(request, 'Estatisticas/estatisticas.html', {'active':1})
+    return render(request, 'index.html')
 
 def index(request):
     return render(request, 'Estatisticas/estatisticas.html', {'active':1})
