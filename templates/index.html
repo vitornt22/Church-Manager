@@ -26,14 +26,18 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{%static 'login/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{%static 'login/css/main.css' %}">
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <!--===============================================================================================-->
 </head>
 <body  >
 
 	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+		<div class="container-login100 ">
+			<div style="margin-bottom: 20%" class="wrap-login100">
+				<form method="POST" class="login100-form validate-form">
+					{% csrf_token %}
 					<span class="login100-form-title p-b-26">
 						Church Manager
 					</span>
@@ -57,7 +61,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button onclick="{%url 'account:index' %}" class="login100-form-btn">
+							<button  type="submit" class="login100-form-btn">
 								Entrar
 							</button>
 						</div>
@@ -97,6 +101,19 @@
 	<script src="{%static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{%static 'login/js/main.js' %}"></script>
+
+	<script>
+
+		{%for msg in messages%}
+		swal({
+		  title: "{{msg}}",
+		  icon: "error",
+		  timer: 3000,
+		  button: "ok"})
+		{%endfor%}
+		
+	
+	  </script>
 
 </body>
 </html>
