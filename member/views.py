@@ -28,7 +28,7 @@ def deleteMember(request, id):
     return redirect('member:list')
 
 
-@login_required(login_url='account:login', redirect_field_name='next')
+@login_required(login_url='account:login ', redirect_field_name='next')
 def profile(request, id):
     instancia = Member.objects.get(id=id)
     if request.POST:

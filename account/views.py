@@ -1,9 +1,10 @@
 from http.client import HTTPResponse
-from django.contrib.auth import authenticate, login, logout
-from django.urls import reverse
+
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
+from django.urls import reverse
 
 
 # Create your views here.
@@ -27,20 +28,22 @@ def login_view(request):
         return redirect('account:login')
 
     if request.POST:
-        email= request.POST.ger('email')
-        senha= request.POST.get('pass')
+        email = request.POST.ger('email')
+        senha = request.POST.get('pass')
     return render(request, 'index.html')
+
 
 @login_required(login_url='account:login', redirect_field_name='next')
 def logout_view(request):
     logout(request)
     return redirect(reverse('account:login'))
 
+
 @login_required(login_url='account:login', redirect_field_name='next')
 def index(request):
-    return render(request, 'Estatisticas/estatisticas.html', {'active':1})
+    return render(request, 'Estatisticas/estatisticas.html', {'active': 1})
 
 
 @login_required(login_url='account:login', redirect_field_name='next')
 def profile(request):
-    return render(request, "Adm/Perfil.html", {'active':6})
+    return render(request, "Adm/Perfil.html", {'active': 6})
