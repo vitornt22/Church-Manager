@@ -23,4 +23,3 @@ urlpatterns = [
     path('entradas/', include('entrie.urls')),
     path('saídas/', include('spent.urls')),
 ]
-

@@ -1,0 +1,113 @@
+{% extends 'Base/BaseAdmin.html' %}
+{% load crispy_forms_tags%}
+
+{%block addLink%}
+  
+{%endblock addLink%}
+
+
+
+{%block content%}
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="card card-lightblue">
+        <div class="card-header">
+          <h3 class="card-title">Cadastrar Fiel</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="POST">
+          {% csrf_token %}
+         
+          
+          <div class="card-body">
+            
+            <div class="row">
+                <div class="col-lg-8 form-group">
+                    {{form.fullName|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 form-group">
+                  {{form.email|as_crispy_field}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 form-group">
+                  {{form.cpf|as_crispy_field}}
+                </div>
+                <div class="col-lg-2 form-group">
+                  {{form.phone|as_crispy_field}}
+                </div>
+                <div class="col-lg-2 form-group">
+                  {{form.born|as_crispy_field}}
+              </div>
+                <div class="col-lg-5 form-group">
+                  {{form.adress|as_crispy_field}}
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-1 form-group">
+                  {{form.number|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 form-group">
+                  {{form.city|as_crispy_field}}
+                </div>
+                <div class="col-lg-1 form-group">
+                  {{form.state|as_crispy_field}}
+                </div>
+                <div class="col-lg-3 form-group">
+                    {{form.district|as_crispy_field}}
+                </div>
+                <div class="col-lg-1 form-check">
+                  {{form.genre|as_crispy_field}}
+                </div>
+                <div class="col-lg-2 form-group">
+                        {{form.upload|as_crispy_field}}
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-4 form-check">
+                   {{form.is_baptized_water|as_crispy_field}}
+                  </div>
+                  <div class="col-lg-4 form-check">
+                    {{form.is_baptized_holySpirit|as_crispy_field}}
+                  </div>
+                  <div class="col-lg-4 form-check">
+                    {{form.is_tither|as_crispy_field}}
+                  </div>
+                  
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn bg-lightblue">Cadastrar</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+  
+{%endblock content%}
+
+{%block addScript%}
+<script>
+  {% for msg in messages%}
+  swal({
+    title: "{{msg}}",
+    text: "Deseja ver as informações do novo membro cadastrado?",
+    icon: "success",
+    buttons: ["Cadastrar Outro Fiel",'Ver Dados'],
+  }).then((willDelete) => {
+    if (willDelete) {
+        window.location="{%url 'member:profile' id %}";
+    } else {
+      window.location="{%url 'member:register' %}";
+    }
+  });
+  {%endfor%}
+</script>
+{%endblock addScript%}

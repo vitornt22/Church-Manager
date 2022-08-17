@@ -31,20 +31,16 @@ def login_view(request):
         senha= request.POST.get('pass')
     return render(request, 'index.html')
 
-@login_required(login_url='company:login', redirect_field_name='next')
+@login_required(login_url='account:login', redirect_field_name='next')
 def logout_view(request):
-
-    if not request.POST:
-        return redirect(reverse('account:login'))
-
     logout(request)
-    return redirect(reverse('company:login'))
+    return redirect(reverse('account:login'))
 
-@login_required(login_url='company:login', redirect_field_name='next')
+@login_required(login_url='account:login', redirect_field_name='next')
 def index(request):
     return render(request, 'Estatisticas/estatisticas.html', {'active':1})
 
 
-@login_required(login_url='company:login', redirect_field_name='next')
+@login_required(login_url='account:login', redirect_field_name='next')
 def profile(request):
     return render(request, "Adm/Perfil.html", {'active':6})
