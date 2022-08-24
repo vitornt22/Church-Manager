@@ -160,7 +160,6 @@
   .limiter {
     width: 100%;
     margin: 0 auto;
-    width: 100%;
     background-image: url("fundo.png");
     background-repeat: no-repeat;
     background-size:100%;
@@ -194,7 +193,7 @@
   
   .wrap-login100 {
     width: 500px;
-    height: 85Vh;
+    height: 65vh;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;

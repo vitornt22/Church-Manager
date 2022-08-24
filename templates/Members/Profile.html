@@ -102,11 +102,15 @@
           <div class="card-body box-profile">
             <div class="text-center">
               <img class="profile-user-img img-fluid img-circle"
+                   {%if info.genre == "M"%}
                    src="{%static 'dist/img/user1-128x128.jpg' %}"
+                   {%else%}
+                   src="{%static 'dist/img/mulher.jpeg' %}"
+                   {%endif%}
                    alt="">
             </div>
 
-            <h3 class="profile-username text-center">Joao Vitor</h3>
+            <h3 class="profile-username text-center">{{info.fullName}}</h3>
 
 
             <ul class="list-group list-group-unbordered mb-3">
