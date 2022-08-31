@@ -6,10 +6,12 @@
 
 {% block botaoAdd %}
     <div class="ml-4 input-group-append">
-        <button type="submit" class="btn btn-default " data-toggle="tooltip" data-placement="top" title="Cadastrar Nova Entrada">
+        <button type="submit" class="btn btn-default " data-toggle="modal" data-target="#exampleModalCenter" data-toggle="tooltip" data-placement="top" title="Cadastrar Nova Entrada">
             <i class="fa-solid fa-plus"></i>
         </button>
     </div>
+
+    {%include 'IncludeItems/modal.html' %}
 {% endblock botaoAdd %}
           
 {% block thead %}

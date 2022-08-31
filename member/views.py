@@ -1,6 +1,5 @@
 
 
-from church.models import Church
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -38,8 +37,9 @@ def deleteMember(request, id):
 def profile(request, id):
     instancia = Member.objects.get(id=id)
     if request.POST:
-        form = MemberForm(request.POST, instance=instancia)
+        form = MemberForm(request.POST, request.FILES,  instance=instancia)
         if form.is_valid():
+
             form.save()
             messages.success(request, 'Dados Alterados com sucesso')
     else:
@@ -56,7 +56,7 @@ def editMember(request):
 def registerMember(request):
     id = None
     if request.method == 'POST':
-        form = MemberForm(request.POST)
+        form = MemberForm(request.POST, request.FILES)
         if form.is_valid():
             member = form.save(commit=False)
             member.church = request.user.church

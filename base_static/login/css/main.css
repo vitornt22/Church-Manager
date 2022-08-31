@@ -166,7 +166,7 @@
     bottom: 0;
     color: black;
     left: 0;
-    overflow: hidden;
+    overflow: auto;
     padding: 3em;
     position: absolute;
     right: 0;
@@ -179,7 +179,8 @@
   
   .container-login100 {
     width: 100%;  
-    min-height: 100vh;
+    margin:auto;
+    min-height: 85vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -193,7 +194,7 @@
   
   .wrap-login100 {
     width: 500px;
-    height: 65vh;
+    height:40em;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -211,7 +212,8 @@
   [ Form ]*/
   
   .login100-form {
-    width: 100%;
+    width: 80%;
+    margin: auto;
   }
   
   .login100-form-title {

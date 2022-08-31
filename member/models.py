@@ -1,4 +1,3 @@
-import datetime
 
 from church.models import Church
 from django.db import models
@@ -34,7 +33,7 @@ class Member (models.Model):
         default=False)
     is_tither = models.BooleanField(default=False)
 
-    upload = models.FileField(blank=True, null=True, upload_to='uploads/')
+    upload = models.ImageField(blank=True, null=True, upload_to='uploads/')
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -42,6 +41,3 @@ class Member (models.Model):
             self.slug = slug
 
         return super().save(*args, **kwargs)
-
-
-# GIT COMIIT TEST

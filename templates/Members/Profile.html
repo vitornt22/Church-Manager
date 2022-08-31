@@ -22,7 +22,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form method="POST">
+        <form method="POST" enctype='multipart/form-data'>
           {% csrf_token %}
          
           
@@ -101,13 +101,13 @@
         <div style="height: 75Vh;" class="card card-primary card-outline">
           <div class="card-body box-profile">
             <div class="text-center">
-              <img class="profile-user-img img-fluid img-circle"
-                   {%if info.genre == "M"%}
-                   src="{%static 'dist/img/user1-128x128.jpg' %}"
+              <img class="profile-user-img img-fixed img-circle" width=100 height=100
+                   {%if info.upload %}
+                   src="{{info.upload.url}}"
                    {%else%}
-                   src="{%static 'dist/img/mulher.jpeg' %}"
+                   src="{%static 'dist/img/user.png' %}"
                    {%endif%}
-                   alt="">
+                   alt="user">
             </div>
 
             <h3 class="profile-username text-center">{{info.fullName}}</h3>
