@@ -115,21 +115,21 @@
 
             <ul class="list-group list-group-unbordered mb-3">
               <li class="list-group-item">
-                <a href="#" class="btn bg-success btn-block"><b>Carta de Recomendação</b></a>
+                <a href="{%url 'member:emitirCarta' info.id 'Recomendação' %}" class="btn bg-success btn-block"><b><i class="fa-regular fa-envelope"></i>    Carta de Recomendação</b></a>
             </li>
               <li class="list-group-item">
-                <a href="#" class="btn bg-lightblue btn-block"><b>Carta de Mudança</b></a>
+                <a href="{%url 'member:emitirCarta' info.id 'Mudança' %}" class="btn bg-lightblue btn-block"><b><i class="fa-solid fa-envelope-open-text"></i> Carta de Mudança</b></a>
             </li>
               <li class="list-group-item">
-                <a href="#" class="btn bg-danger btn-block"><b>Remover</b></a>
+                <a href="#" class="btn bg-danger btn-block"><i class="fa-solid fa-trash-can"></i>   <b>Remover</b></a>
             </li>
             </ul>
 
           </div>
           <!-- /.card-body -->
         </div>
-        <!-- /.card -->
-
+        <!-- /.card-->
+ 
 </div>
       <!-- /.card -->
 

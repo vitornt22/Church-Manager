@@ -1,0 +1,76 @@
+{%extends 'Base/BaseAdmin.html'%}
+{% load crispy_forms_tags%}
+{%load static%}
+
+{%block addLink%}
+  
+{%endblock addLink%}
+
+
+
+{%block content%}
+<div class="row">
+    <!-- left column -->
+    <div class="m-auto col-md-8">
+      <!-- general form elements -->
+      <div class="card card-lightblue">
+        <div class="card-header">
+          <h3 class="card-title">Cadastrar Saída</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+         
+          
+          <div class="card-body">
+            
+            <div style="color:black;" class="row">
+              
+             
+              <div class="col-lg-6 form-group">
+                {{form.value|as_crispy_field}}
+            </div>
+              <div class="col-lg-6 form-group">
+                {{form.date|as_crispy_field}}
+                <p style="color:red; font-size:12px;">Deixe em branco se a data for hoje</p>
+              </div>
+              <div class="col-lg-12 form-group">
+                {{form.ocassion|as_crispy_field}}
+              </div>
+           
+            
+            
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn bg-lightblue">Cadastrar</button>
+            <a href="{%url 'spent:spents' %}" type="button" class="btn btn-secondary">Voltar</a>
+          </div>
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+  
+{%endblock content%}
+
+{%block addScript%}
+<script>
+  {% for msg in messages%}
+  swal({
+    title: "{{msg}}",
+    text: "{{text}}",
+    icon: "success",
+    buttons: ["Não",'Sim'],
+  }).then((willDelete) => {
+    if (willDelete) {
+    } else {
+      window.location="{%url 'spent:spents' %}"
+    }
+  });
+  
+  
+  {%endfor%}
+</script>
+{%endblock addScript%}

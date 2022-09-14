@@ -12,13 +12,18 @@
 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150;">
-              <input type="text" name="table_search" class="form-control float-right" placeholder="Pesquisar">
+              <form method="GET" class="form-inline">
+              
+              <input type="text" name="table_search" 
+              {%if mask%}  data-mask={{mask}} {%endif%}
+              class="form-control float-right" placeholder="Pesquisar {{target}}">
 
               <div class="input-group-append">
                 <button type="submit" class="btn btn-default">
                   <i class="fas fa-search"></i>
                 </button>
               </div>
+            </form>
  
               {% block botaoAdd %}
               {% endblock botaoAdd %}
@@ -42,5 +47,36 @@
       <!-- /.card -->
     </div>
   </div>
-  <!-- /.row -->
+
+
+  
+
 {% endblock content %}
+
+{%block addScript%}
+ <script> 
+    {% for msg in messages%}
+    {% if msg.tags == "message-sucess" %}
+    var icon="success";
+    {% elif msg.tags == "message-error" %}
+    var icon="error"
+    {%else%}
+    var icon='warning'
+    {%endif%}
+    swal({
+    title: "{{msg}}",
+    icon: icon,
+    timer: 3000,
+    button: "ok"}).then((value) => {
+    });  
+    {% endfor %}
+
+    $(document).on('click', '.areSure', function(e){
+      var form = document.getElementById("form-this")
+      return confirm("Tem certeza que quer deletar ?")
+    }); 
+</script>
+
+
+{%endblock addScript%}
+

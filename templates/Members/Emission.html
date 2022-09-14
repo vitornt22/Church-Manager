@@ -17,10 +17,9 @@
 {% block thead %}
     <tr>
         <th>ID</th>
-        <th>Categoria</th>
-        <th>Date</th>
-        <th>Valor(R$)</th>
-        <th>Ocasião</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Email(R$)</th>
         <th><th>
         <th></th>
     </tr>
@@ -28,32 +27,20 @@
               
            
 {% block tbody %}
-{%for i in '123456'|make_list%}
+{%for i in members%}
 <tr>
-  <td>183</td>
-  <td>Oferta</td>
-  <td>11-7-2022</td>
-  <td><span class="tag tag-success">R$ 500</span></td>
-  <td>Oferta da loja Iaponira Boutique </td>
-  <td><a type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Carta de recomendação">
+  <td>{{i.id}}</td>
+  <td>{{i.fullName}}</td>
+  <td>{{i.cpf}}</td>
+  <td>{{i.email}}</td>
+  <td><a href="{%url 'member:emitirCarta' i.id 'Recomendação' %}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Carta de recomendação">
     <i class="fa-solid fa-envelope"></i>  
   </a></td>
-  <td><a type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Carta de mudança">
+  <td><a href="{%url 'member:emitirCarta' i.id 'Mudança' %}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Carta de mudança">
     <i class="fa-solid fa-envelope-open-text"></i>  </a></td>
 </tr>
 
-<tr>
-  <td>183</td>
-  <td>Dízimo</td>
-  <td>22-07-2022</td>
-  <td><span class="tag tag-success">R$: 10000</span></td>
-  <td>Dizimo da congregação  do bairro Bela Vista </td>
-  <td><a type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Carta de recomendação">
-    <i class="fa-solid fa-envelope"></i>  
-  </a></td>
-  <td><a type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Carta de mudança">
-    <i class="fa-solid fa-envelope-open-text"></i>  </a></td>
-</tr>
+
 {%endfor%}
 {% endblock tbody %}
             

@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 
 import django_on_heroku
-from decouple import config
+# from decouple import config
 from django.contrib.messages import constants
 from dotenv import find_dotenv, load_dotenv
 

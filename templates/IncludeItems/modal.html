@@ -1,19 +1,46 @@
+{% load crispy_forms_tags%}
+
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+  <form method="POST">
+    {% csrf_token %}
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+      <div  class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 style="color:black;" class="modal-title" id="exampleModalLongTitle">Cadastrar {{tag}} </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          
+          <div style="color:black;" class="row">
+            {%if tag == "Entrada"%}
+            <div class="col-lg-6 form-group">
+              {{form.category|as_crispy_field}}
+            </div>
+            {%endif%}
+           
+            <div class="col-lg-6 form-group">
+              {{form.value|as_crispy_field}}
+          </div>
+            <div class="col-lg-6 form-group">
+              {{form.date|as_crispy_field}}
+              <p style="color:red; font-size:12px;">Deixe em branco se a data for hoje</p>
+            </div>
+            <div class="col-lg-12 form-group">
+              {{form.ocassion|as_crispy_field}}
+            </div>
+        </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary">Cadastrar Entrada</button>
+          <button name="register" type="submit" class="btn btn-primary">Cadastrar</button>
         </div>
+        
       </div>
+
     </div>
+  </form>
   </div>
