@@ -15,7 +15,7 @@
     <!-- small box -->
     <div class="small-box bg-info">
       <div class="inner">
-        <h3>150</h3>
+        <h3>{{members}}</h3>
 
         <p>Membros</p>
       </div>
@@ -30,7 +30,7 @@
     <!-- small box -->
     <div class="small-box bg-warning">
       <div class="inner">
-        <h3>80<sup style="font-size: 20px"></sup></h3>
+        <h3>{{congregados}}<sup style="font-size: 20px"></sup></h3>
 
         <p>Congregados</p>
       </div>
@@ -45,7 +45,7 @@
     <!-- small box -->
     <div class="small-box bg-danger">
       <div class="inner">
-        <h3>100</h3>
+        <h3>{{tithes}}</h3>
 
         <p>Dizimistas</p>
       </div>
@@ -60,7 +60,7 @@
     <!-- small box -->
     <div class="small-box bg-success">
       <div class="inner">
-        <h3>R$ 1.300</h3>
+        <h3>R$ {{caixa}}</h3>
 
         <p>Caixa</p>
       </div>
@@ -85,12 +85,19 @@
       <div class="card-body">
         <div class="d-flex">
           <p class="d-flex flex-column">
-            <span class="text-bold text-lg">$5,267.00</span>
+            <span class="text-bold text-lg">{{lucroMes}}</span>
             <span>Lucro deste mês</span>
           </p>
           <p class="ml-auto d-flex flex-column text-right">
             <span class="text-success">
-              <i class="fas fa-arrow-up"></i> 33.1%
+              {% if aumento > 0%}
+            <span class="text-success">
+              <i class="fas fa-arrow-up"></i> {{aumento}}%
+            {%else%}
+            <span class="text-danger">
+            <i class="fas fa-arrow-down"></i> {{aumento}}%
+            {%endif%}
+            </span> <i class="fas fa-arrow-up"></i> 33.1%
             </span>
             <span class="text-muted">Aumento desde ultimo mês</span>
           </p>
@@ -130,53 +137,59 @@
 {%block addScript%}
 
 <script>
-  const ctx = document.getElementById('pie-chart');
+  {% if scroll == 10%}
+  $(document).ready(function(){
+      $('html, body').animate({
+          scrollTop: 2000
+      }, 1600);
+  });
+  {%endif%}
 
-  const data = {
-    labels: [
-      'Entradas',
-      'Saídas'
+const ctx = document.getElementById('pie-chart');
+
+const data = {
+  labels: [
+    'Entradas',
+    'Saídas'
+  ],
+  datasets: [{
+    label: 'Entradas e Saídas',
+    data: {{grafico}},
+    backgroundColor: [
+      'rgb(0, 50, 255)',
+      'rgb(255, 205, 86)'
     ],
-    datasets: [{
-      label: 'Entradas e Saídas',
-      data: [300, 100],
-      backgroundColor: [
-        'rgb(0, 50, 255)',
-        'rgb(255, 205, 86)'
-      ],
-      hoverOffset: 4
-    }]
-  };
+    hoverOffset: 4
+  }]
+};
 
-  const config = {
-    type: 'doughnut',
-    data: data,
-  };
+const config = {
+  type: 'pie',
+  data: data,
+};
 
-  mychart= new Chart(ctx, config)
+mychart= new Chart(ctx, config)
 
-  new Chart(document.getElementById("barChart"), {
-    type: 'bar',
-    data: {
-      labels: ["Jan", "Fev", "Mar", "Abr", "Mai","Jun", "Jul" , "Ago" , "Set", "Out", "Nov" , "Dez"],
-      datasets: [
-        {
-          label: "Lucro em R$",
-          backgroundColor: ["#3e95cd",  ],
-          data: [2478,5267,734,784,433,234,5000, 2478,5267,734,784,433]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
+new Chart(document.getElementById("barChart"), {
+  type: 'bar',
+  data: {
+    labels: ["Jan", "Fev", "Mar", "Abr", "Mai","Jun", "Jul" , "Ago" , "Set", "Out", "Nov" , "Dez"],
+    datasets: [
+      {
+        label: "Lucro em R$",
+        backgroundColor: ["#3e95cd",  ],
+        data: {{lucroLista}}
       }
+    ]
+  },
+  options: {
+    legend: { display: false },
+    title: {
+      display: true,
+      text: 'Predicted world population (millions) in 2050'
     }
+  }
 });
-
-
 </script>
 
 

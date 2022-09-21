@@ -31,3 +31,15 @@ class EntrieForm(forms.ModelForm):
             'ocassion': forms.TextInput(attrs={'placeholder': 'Ex: Dízimo da ad Acampamento'})
 
         }
+
+    def clean_date(self):
+        date = self.cleaned_data.get('date')
+        hoje = datetime.date.today()
+
+        if date > hoje or date.month != hoje.month:
+            raise ValidationError((
+                'Data indisponivel'
+            ),
+                code='invalid'
+            )
+        return date
