@@ -12,7 +12,8 @@ from .models import Entrie
 
 @login_required(login_url='account:login', redirect_field_name='next')
 def entries(request):
-    entries = Entrie.objects.filter(church=request.user.church)
+    entries = Entrie.objects.filter(
+        church=request.user.church)
     data = request.GET.get('table_search')
 
     if request.GET.get('table_search'):

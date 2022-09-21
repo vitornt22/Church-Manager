@@ -34,6 +34,9 @@ class SpentForm(forms.ModelForm):
         date = self.cleaned_data.get('date')
         hoje = datetime.date.today()
 
+        if len(date) == 0:
+            date = hoje
+
         if date > hoje or date.month != hoje.month:
             raise ValidationError((
                 'Data indisponivel'
