@@ -34,7 +34,7 @@ class SpentForm(forms.ModelForm):
         date = self.cleaned_data.get('date')
         hoje = datetime.date.today()
 
-        if date != None and len(date) == 0:
+        if date == None:
             date = hoje
 
         if date > hoje or date.month != hoje.month:

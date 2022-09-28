@@ -1,10 +1,13 @@
 # flake8: noqa: E501
 import datetime
+import io
 from http.client import HTTPResponse
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.files.base import ContentFile
+from django.http import FileResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from entrie.models import Entrie
@@ -12,7 +15,6 @@ from member.models import Member
 from spent.models import Spent
 
 
-# Create your views here.
 def login_view(request):
 
     if request.method == 'GET':
@@ -61,11 +63,6 @@ def index(request):
 
     return render(request, 'Estatisticas/estatisticas.html', {'caixa': caixa, 'grafico': [entradas, saidas], 'aumento': aumento, 'lucroMes': lucroLista[int(mes)-1], 'lucroLista': lucroLista, 'members': members,
                                                               'tithes': tithes, 'congregados': congregados, 'active': 1, })
-
-
-@login_required(login_url='account:login', redirect_field_name='next')
-def profile(request):
-    return render(request, "Adm/Perfil.html", {'active': 6})
 
 
 def listaFinancas(church):

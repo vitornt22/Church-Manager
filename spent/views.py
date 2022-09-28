@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import redirect, render
+from report.views import generatorReports
 
 from .forms import SpentForm
 from .models import Spent
@@ -45,11 +46,10 @@ def register(request):
 
         if form.is_valid():
             print('E VALIDO')
-            entrie = form.save(commit=False)
-            entrie.church = request.user.church
-            if entrie.date is None:
-                entrie.date = datetime.date.today()
-            entrie.save()
+            spent = form.save(commit=False)
+            spent.church = request.user.church
+            spent.save()
+            generatorReports(request)
             form = SpentForm()
             messages.success(request, 'Entrada cadastrada com sucesso')
 

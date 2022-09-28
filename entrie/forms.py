@@ -35,7 +35,7 @@ class EntrieForm(forms.ModelForm):
     def clean_date(self):
         date = self.cleaned_data.get('date')
         hoje = datetime.date.today()
-        if date == None or len(date) == 0:
+        if date == None:
             date = hoje
 
         if date > hoje or date.month != hoje.month:

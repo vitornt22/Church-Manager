@@ -15,4 +15,4 @@ class Entrie(models.Model):
         choices=CHOICES, max_length=8, blank=False, null=False)
     date = models.DateField(null=True, blank=True)
     value = models.FloatField(blank=False, null=False)
-    ocassion = models.CharField(max_length=200, blank=False, null=False)
+    ocassion = models.CharField(max_length=55, blank=False, null=False)

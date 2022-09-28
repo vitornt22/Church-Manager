@@ -1,4 +1,3 @@
-from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
@@ -7,6 +6,7 @@ ESTADOS = (('AC', 'AC'), ('AL', 'AL'), ('AP', 'AP'), ('AM', 'AM'), ('BA', 'BA'),
            ('MG', 'MG'), ('PA', 'PA'), ('PB', 'PB'), ('PR', 'PR'), ('PE', 'PE'), ('PI', 'PI'),  # noqa
             ('RJ', 'RJ'), ('RN', 'RN'), ('RS', 'RS'), ('RO', 'RO'), ('RR', 'RR'), ('SC', 'SC'),  # noqa
            ('SP', 'SP'), ('SE', 'SE'), ('TO', 'TO'))
+
 
 class ChurchManager(BaseUserManager):
     def create_user(self, cnpj, name, email, password=None):
@@ -45,20 +45,20 @@ class ChurchManager(BaseUserManager):
 
 
 class Church (AbstractBaseUser):
-    id= models.BigAutoField(primary_key=True)
-    name= models.CharField(max_length=70, null=False, blank=False)
-    ministery= models.CharField(max_length=50)
-    email= models.EmailField()
-    cnpj= models.CharField(max_length=18)
-    phone= models.CharField(max_length=15)
+    id = models.BigAutoField(primary_key=True)
+    name = models.CharField(max_length=70, null=False, blank=False)
+    ministery = models.CharField(max_length=50)
+    email = models.EmailField()
+    cnpj = models.CharField(max_length=18)
+    phone = models.CharField(max_length=15)
     adress = models.CharField(max_length=60)
-    number= models.IntegerField()
-    city= models.CharField(max_length=80)
+    number = models.IntegerField()
+    city = models.CharField(max_length=80)
     state = models.CharField(blank=True, null=True, max_length=2, choices=ESTADOS)  # noqa
-    district= models.CharField(max_length=40)
+    district = models.CharField(max_length=40)
 
     USERNAME_FIELD = 'cnpj'
-    REQUIRED_FIELDS = ['name','email','cnpj', 'password']
+    REQUIRED_FIELDS = ['name', 'email', 'cnpj', 'password']
 
     objects = ChurchManager()
 
@@ -70,4 +70,3 @@ class Church (AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
-

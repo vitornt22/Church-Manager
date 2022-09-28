@@ -1,0 +1,64 @@
+{%extends 'Base/BaseAdmin.html'%}
+
+{%block content%}
+
+<div class="row">
+    <div class="m-auto col-4">
+      <div  style="height: 70Vh;" class="card">
+        <div class="card-header bg-lightblue">
+        {% block cardTitle %}{% endblock cardTitle %}
+
+          <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150;">
+              <form method="GET" class="form-inline">
+              
+              <input type="text" name="table_search" 
+              {%if mask%}  data-mask={{mask}} {%endif%}
+              class="form-control float-right" placeholder="Pesquisar {{target}}">
+
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-default">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </form>
+ 
+              {% block botaoAdd %}
+              {% endblock botaoAdd %}
+            </div>
+            
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0" style="height: 300px;">
+          <table class="table table-head-fixed text-nowrap">
+            <thead>
+                <tr>
+                    <th>data</th>
+                    <th>baixar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for i in reports%}
+                <tr>
+                <td>{{i.mounth}}/{{i.year}}</td>
+                <td><a href="{%url 'report:download' i.id %}"  class=" btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Download">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a></td>
+                </tr>
+        
+            {%endfor%}            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+
+
+{%endblock content%}
+
+
+
+

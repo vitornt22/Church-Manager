@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import redirect, render
+from report.views import generatorReports
 
 from .forms import EntrieForm
 from .models import Entrie
@@ -38,7 +39,7 @@ def entries(request):
 @ login_required(login_url='account:login', redirect_field_name='next')
 def register(request):
     form = EntrieForm()
-    print('ENTROU')
+
     if request.POST:
         form = EntrieForm(request.POST)
 
@@ -49,6 +50,7 @@ def register(request):
             if entrie.date is None:
                 entrie.date = datetime.date.today()
             entrie.save()
+            generatorReports(request)
             form = EntrieForm()
             messages.success(request, 'Entrada cadastrada com sucesso')
 

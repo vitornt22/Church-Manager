@@ -1,5 +1,8 @@
 {% extends 'Base/BaseAdmin.html' %}
+{% load crispy_forms_tags%}
+
 {%load static%}
+
 {%block addLink%}
   
 {%endblock addLink%}
@@ -17,50 +20,54 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form>
+        <form method="POST">
+            {% csrf_token %}
           <div class="card-body">
             <div class="row">
-                <div class="col-lg-8 form-group">
-                    <label for="exampleInputEmail1">Nome e ministério</label>
-                    <input type="input" class="form-control" id="exampleInputName" placeholder="Assembleia de Deus: missão">
+                <div class="col-lg-4 form-group">
+                    {{form.name|as_crispy_field}}
+
                 </div>
                 <div class="col-lg-4 form-group">
-                    <label for="exampleInputEmail1">Endereço de Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="admisao@gmail.com">
+                    {{form.ministery |as_crispy_field}}
+
                 </div>
+                <div class="col-lg-4 form-group">
+                    {{form.email |as_crispy_field}}
+                </div>
+               
             </div>
             <div class="row">
                 <div class="col-lg-3 form-group">
-                    <label for="exampleInputEmail1">CNPJ</label>
-                    <input type="input" data-mask="00.000.000/0001-00" class="form-control" id="exampleCPFEmail1" placeholder="">
+                    {{form.cnpj |as_crispy_field}}
                 </div>
                 <div class="col-lg-3 form-group">
-                    <label for="exampleInputEmail1">Telefone</label>
-                    <input type="phone" class="form-control" id="exampleCPFEmail1" placeholder="(89) 999887755">
+                    {{form.phone |as_crispy_field}}
+
                 </div>
                
                 <div class="col-lg-6 form-group">
-                    <label for="exampleInputEmail1">Endereço</label>
-                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Av Sete de Setembro">
+                    {{form.adress |as_crispy_field}}
+
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-lg-1 form-group">
-                    <label for="exampleInputEmail1">Nº</label>
-                    <input type="number" class="form-control" id="exampleCPFEmail1" placeholder="1">
+                    {{form.number |as_crispy_field}}
+
                 </div>
                 <div class="col-lg-4 form-group">
-                    <label for="exampleInputEmail1">Cidade</label>
-                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Fronteiras">
+                    {{form.city |as_crispy_field}}
+
                 </div>
                 <div class="col-lg-3 form-group">
-                    <label for="exampleInputEmail1">Estado</label>
-                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="PI">
+                    {{form.state |as_crispy_field}}
+
                 </div>
                 <div class="col-lg-4 form-group">
-                    <label for="exampleInputEmail1">Bairro</label>
-                    <input type="input" class="form-control" id="exampleCPFEmail1" placeholder="Centro">
+                    {{form.district |as_crispy_field}}
+
                 </div>
                 
                 
@@ -82,3 +89,49 @@
 
   
 {%endblock content%}
+
+{% block  addScript %}
+  <script src="{% static '/js/scripts.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static '/js/jquery.mask.min.js' %}"></script>
+  <script src="{% static '/js/scripts.js' %}"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script>
+      {% for msg in messages%}
+      {% if msg.tags == "message-sucess" %}
+      swal({
+       title: "{{msg}}",
+       icon: "success",
+       timer: 3000,
+       button: "ok"}).then((value) => {
+        window.location="{%url 'church:profile'  %}";
+      });
+      
+
+      {% endif %}
+
+      {% endfor %}
+      
+
+      $(document).on('click', '.areSure', function(e){
+        var form = document.getElementById("form-this")
+        return confirm("Tem certeza que alterar os dados da empresa? ?")
+      });
+  </script>
+  <script>
+    
+    document.getElementById('meuCarrossel').on('slid.bs.carousel', function () {
+      var currentSlide = $('#meuCarrossel div.active').index();
+      sessionStorage.setItem('lastSlide', currentSlide);   
+      });
+
+      if(sessionStorage.lastSlide){
+        $("#meuCarrossel").carousel(sessionStorage.lastSlide*1);
+      }
+    
+  </script>
+{% endblock addScript %}

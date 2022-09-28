@@ -23,6 +23,10 @@ urlpatterns = [
     path('', include('account.urls')),
     path('fieis/', include('member.urls')),
     path('entradas/', include('entrie.urls')),
-    path('saídas/', include('spent.urls')),
+    path('saidas/', include('spent.urls')),
+    path('relatorios/', include('report.urls')),
+    path('igreja/', include('church.urls')),
+
+
 ] + static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)
